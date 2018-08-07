@@ -1,5 +1,4 @@
 import time
-import sys
 from tkinter import *
 import keyboard
 
