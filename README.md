@@ -4,7 +4,7 @@ A Rubik's Cube timer built in Python. The timer starts upon clicking the Start b
 Future plans include:
 1. ~~Display of old times inside the Timer Window~~ Done!
 2. Display of Average of 5 and Average of 12
-3. ~~Display of Scrambles for the Rubik's Cube~~ Done!
+3. ~~Display of Scrambles for the Rubik's Cube~~ Done for 3x3 as of now!
 
 # Requirements
 Python 3 and pip
