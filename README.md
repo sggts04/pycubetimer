@@ -14,6 +14,9 @@ Python 3 and pip
 * Open Command Line
 * Type `cd directory_of_downloaded_repository_goes_here`
 * Type `pip install -r requirements.txt`
+
 Example:
-`cd C:\Users\Shreyas\Downloads\cubetimer-master
-pip install -r requirements.txt`
+```
+cd C:\Users\Shreyas\Downloads\cubetimer-master
+pip install -r requirements.txt
+```
