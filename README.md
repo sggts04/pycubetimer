@@ -12,8 +12,10 @@ Python 3 and pip
 # Installation
 * Download the ZIP file of repository and extract
 * Open Command Line
-* Type `cd directory_of_downloaded_repository_goes_here`
-* Type `pip install -r requirements.txt`
+* Type
+```cd directory_of_downloaded_repository```
+* Type 
+```pip install -r requirements.txt```
 
 Example:
 ```
