@@ -1,6 +1,7 @@
 import time
 from tkinter import *
 import keyboard
+from pyTwistyScrambler import scrambler333
 
 b = 0
 timed = '0.00'
@@ -20,6 +21,7 @@ def watch() :
 def freeze():
     global b, timed, count, times_list
     b=b+1
+    scramble.config(text = scrambler333.get_WCA_scramble())
     times_file = open('times.txt', 'a+')
     times_file.write(timed + '\n')
     times_file.close()
@@ -77,10 +79,12 @@ else:
         i = i+1
 
 saved_times = Label(root, text = 'Last 12 Solves: ' + saved_times_str, font=20, background='#f6e58d', fg = 'black')
-timer.grid(row=0, columnspan=2, padx = 20, pady = 20)
-start.grid(row=1, pady=15, padx=10)
-stop.grid(row=1, column=1, pady=15, padx=10)
-times_count.grid(row=2, columnspan=2, pady =10, padx = 5)
-saved_times.grid(row=3, columnspan=2, pady=10, padx = 5)
+scramble = Label(root, text = scrambler333.get_WCA_scramble(), font=20, background = '#f6e58d', fg='black')
+timer.grid(row=1, columnspan=2, padx = 20, pady = 20)
+start.grid(row=2, pady=15, padx=10)
+stop.grid(row=2, column=1, pady=15, padx=10)
+times_count.grid(row=3, columnspan=2, pady =10, padx = 5)
+saved_times.grid(row=4, columnspan=2, pady=10, padx = 10)
+scramble.grid(row=0, columnspan=2, pady=10, padx = 5)
 root.title('Cube Timer')
 root.mainloop()
