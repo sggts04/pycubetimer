@@ -141,5 +141,5 @@ if(count>=5):
     avg5 = '%.2f' % (avg5_flo)
 ao5 = Label(root, text = 'Average of 5: ' + avg5, font=20, background='#f6e58d', fg = 'black')
 ao5.grid(row=5, columnspan = 2, pady=5, padx=10)
-root.title('Cube Timer')
+root.title('pyCubeTimer')
 root.mainloop()
