@@ -1,4 +1,4 @@
-# Cube Timer
+# pyCubeTimer
 A Rubik's Cube timer built in Python. The timer starts upon clicking the Start button and can be stopped either by pressing space-bar or by clicking the Stop button. The timer automatically saves all the times in a text file. 
 
 Future plans include:
@@ -23,6 +23,6 @@ pip install -r requirements.txt
 
 Example:
 ```
-cd C:\Users\Shreyas\Downloads\cubetimer-master
+cd C:\Users\Shreyas\Downloads\pycubetimer-master
 pip install -r requirements.txt
 ```
