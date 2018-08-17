@@ -1,4 +1,5 @@
 import time
+import os
 from tkinter import *
 import keyboard
 from pyTwistyScrambler import scrambler333
@@ -113,8 +114,9 @@ def freeze():
 
 root = Tk()
 root.config(background='#f6e58d')
-times_file = open('times.txt', 'a+')
-times_file.close()
+if(not os.path.exists('times.txt')):
+	times_file = open('times.txt', 'a+')
+	times_file.close()
 times_file = open('times.txt', 'r+')
 times_list = times_file.readlines()
 count = len(times_list)
