@@ -27,3 +27,6 @@ Example:
 cd C:\Users\Shreyas\Downloads\pycubetimer-master
 pip install -r requirements.txt
 ```
+
+# Screenshot
+![alt text](pycubetimer/screenshot.png)
