@@ -5,6 +5,7 @@ Future plans include:
 1. ~~Display of old times inside the Timer Window~~ Done!
 2. ~~Display of Averages~~ Done for AO5 as of now!
 3. ~~Display of Scrambles for the Rubik's Cube~~ Done for 3x3 as of now!
+4. Start of timer using Space-Bar
 
 # Requirements
 Python 3 and pip
