@@ -31,8 +31,8 @@ pip install -r requirements.txt
 # Screenshot
 When Timer is stopped
   
-![](https://raw.githubusercontent.com/sggts04/pycubetimer/master/screenshots/screenshot1.PNG)
+![](https://raw.githubusercontent.com/sggts04/pycubetimer/master/screenshots/screenshot.PNG)
 
 When Timer is working
   
-![](https://raw.githubusercontent.com/sggts04/pycubetimer/master/screenshots/screenshot2.PNG)
+![](https://raw.githubusercontent.com/sggts04/pycubetimer/master/screenshots/screenshot.PNG)
