@@ -7,6 +7,9 @@ from pyTwistyScrambler import scrambler333
 b = 0
 timed = '0.00'
 
+def change_scramble() :
+    scramble.config(text=scrambler333.get_WCA_scramble())
+
 def watch() :
     global b, timed
     b=0
@@ -138,9 +141,10 @@ times_list = times_file.readlines()
 count = len(times_list)
 times_file.close()
 # Main GUI Elements
-timer = Label(root, text = '0.00', font=('Helvetica', 100), background='#f6e58d', fg = 'black')
-img1 = PhotoImage(file="start.png")
-img2 = PhotoImage(file="stop.png")
+timer = Label(root, text = '0.00', font=('Helvetica', 120), background='#f6e58d', fg = 'black')
+img1 = PhotoImage(file="img/start.png")
+img2 = PhotoImage(file="img/stop.png")
+chng_image = PhotoImage(file="img/refresh.png")
 start = Button(root, command = watch, background='#f6e58d', image=img1, font=('Verdana', 20), relief = FLAT)
 stop = Button(root, background='#f6e58d', command = freeze, image=img2, font=('Verdana',20), relief = FLAT, state = DISABLED)
 times_count = Label(root, text = 'No. of Solves: ' + str(count), font=20, background='#f6e58d', fg = 'black')
@@ -164,6 +168,7 @@ else:
 
 saved_times = Label(root, text = 'Last 12 Solves: ' + saved_times_str, font=20, background='#f6e58d', fg = 'black')
 scramble = Label(root, text = scrambler333.get_WCA_scramble(), font=20, background = '#f6e58d', fg='black')
+chng_scramble = Button(root, image=chng_image, relief=FLAT, background = "#f6e58d", command = change_scramble)
 # Pack the elements
 timer.grid(row=1, columnspan=3, padx = 20, pady = 20)
 start.grid(row=2, pady=15, padx=10)
@@ -171,6 +176,7 @@ stop.grid(row=2, column=2, pady=15, padx=10)
 times_count.grid(row=3, columnspan=3, pady =10, padx = 5)
 saved_times.grid(row=4, columnspan=3, pady=10, padx = 10)
 scramble.grid(row=0, columnspan=3, pady=15, padx = 5)
+chng_scramble.grid(row=0, column=2)
 # Initial Average of 5
 avg5 = ''
 avg5_flo = 0
@@ -239,5 +245,5 @@ mean = '%.2f' % (mean)
 meantotal = Label(root, text = 'Total Mean: ' + mean, font=20, background='#f6e58d', fg = 'black')
 meantotal.grid(row=5, column =2, pady=5, padx=10)
 root.title('pyCubeTimer')
-root.wm_iconbitmap('icon.ico')
+root.wm_iconbitmap('img/icon.ico')
 root.mainloop()
