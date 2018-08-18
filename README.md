@@ -29,10 +29,10 @@ pip install -r requirements.txt
 ```
 
 # Screenshot
-At Launch  
+When Timer is stopped
   
 ![](https://raw.githubusercontent.com/sggts04/pycubetimer/master/screenshots/screenshot1.PNG)
 
-When Timer is on  
+When Timer is working
   
 ![](https://raw.githubusercontent.com/sggts04/pycubetimer/master/screenshots/screenshot2.PNG)
