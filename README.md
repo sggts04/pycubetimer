@@ -29,4 +29,7 @@ pip install -r requirements.txt
 ```
 
 # Screenshot
-![](https://raw.githubusercontent.com/sggts04/pycubetimer/master/screenshot.png)
+At Launch
+![](https://raw.githubusercontent.com/sggts04/pycubetimer/master/screenshots/screenshot1.PNG)
+When Timer is on
+![](https://raw.githubusercontent.com/sggts04/pycubetimer/master/screenshots/screenshot2.PNG)
