@@ -12,6 +12,9 @@ def watch() :
     b=0
     timed = '0.00'
     now = time.time()
+    # Enable Stop button and Disable Start button
+    start.config(state = DISABLED)
+    stop.config(state = NORMAL)
     while (b==0):
         time.sleep(.05)
         timer.config(text="%.2f" % (time.time() - now))
@@ -21,15 +24,23 @@ def watch() :
             freeze()
 def freeze():
     global b, timed, count, times_list, p, avg5, avg5_flo, times_list_5_flo, times_list_5, min_5, max_5, min_c, max_c, avg12, avg12_flo, times_list_12_flo, times_list_12, min_12, max_12, min_c12, max_c12, k ,mean
+    # To stop the timer
     b=b+1
+    # Re-Enable Start button and Disable Stop button
+    start.config(state = NORMAL)
+    stop.config(state = DISABLED)
+    # To get new scramble
     scramble.config(text = scrambler333.get_WCA_scramble())
+    # Save new time to file
     times_file = open('times.txt', 'a+')
     times_file.write(timed + '\n')
     times_file.close()
+    # Re-read the file to update stats
     times_file = open('times.txt', 'r+')
     times_list = times_file.readlines()
     count = len(times_list)
     times_file.close()
+    # Updates No. of Solves and Last 12 Solves after new solve
     i = 1
     saved_times_str = ''
     if (count < 12):
@@ -48,6 +59,7 @@ def freeze():
             i = i + 1
     times_count.config(text='No. of Solves: ' + str(count))
     saved_times.config(text='Last 12 Solves: ' + saved_times_str)
+    # Updates Average of 5 after new solve
     avg5 = ''
     avg5_flo = 0
     min_c = 0
@@ -75,6 +87,7 @@ def freeze():
             p = p + 1
         avg5 = '%.2f' % (avg5_flo)
     ao5.config(text = 'Average of 5: ' + avg5)
+    # Updates Average of 12 after new solve
     avg12 = ''
     avg12_flo = 0
     max_c12 = 0
@@ -102,6 +115,7 @@ def freeze():
             p = p + 1
         avg12 = '%.2f' % (avg12_flo)
     ao12.config(text='Average of 12: ' + avg12)
+    # Updates Total Mean after new solve
     k = 0
     mean = 0
     while (k < count):
@@ -114,19 +128,23 @@ def freeze():
 
 root = Tk()
 root.config(background='#f6e58d')
+# Check if times.txt exists, create if not.
 if(not os.path.exists('times.txt')):
-	times_file = open('times.txt', 'a+')
-	times_file.close()
+    times_file = open('times.txt', 'a+')
+    times_file.close()
+# Read the file to get existing times and generate stats
 times_file = open('times.txt', 'r+')
 times_list = times_file.readlines()
 count = len(times_list)
 times_file.close()
+# Main GUI Elements
 timer = Label(root, text = '0.00', font=('Helvetica', 100), background='#f6e58d', fg = 'black')
 img1 = PhotoImage(file="start.png")
 img2 = PhotoImage(file="stop.png")
-start = Button(root, text = ' Start', height = 70, background = 'white', width= 150, command = watch, image=img1, compound = LEFT, font=('Verdana', 20))
-stop = Button(root, text = ' Stop', height = 70, background = 'white', width= 150, command = freeze, image=img2, compound = LEFT, font=('Verdana',20))
+start = Button(root, command = watch, background='#f6e58d', image=img1, font=('Verdana', 20), relief = FLAT)
+stop = Button(root, background='#f6e58d', command = freeze, image=img2, font=('Verdana',20), relief = FLAT, state = DISABLED)
 times_count = Label(root, text = 'No. of Solves: ' + str(count), font=20, background='#f6e58d', fg = 'black')
+# Get last 12 solves
 i=1
 saved_times_str = ''
 if(count<12):
@@ -146,12 +164,14 @@ else:
 
 saved_times = Label(root, text = 'Last 12 Solves: ' + saved_times_str, font=20, background='#f6e58d', fg = 'black')
 scramble = Label(root, text = scrambler333.get_WCA_scramble(), font=20, background = '#f6e58d', fg='black')
+# Pack the elements
 timer.grid(row=1, columnspan=3, padx = 20, pady = 20)
 start.grid(row=2, pady=15, padx=10)
 stop.grid(row=2, column=2, pady=15, padx=10)
 times_count.grid(row=3, columnspan=3, pady =10, padx = 5)
 saved_times.grid(row=4, columnspan=3, pady=10, padx = 10)
 scramble.grid(row=0, columnspan=3, pady=15, padx = 5)
+# Initial Average of 5
 avg5 = ''
 avg5_flo = 0
 max_c=0
@@ -180,6 +200,7 @@ if(count>=5):
     avg5 = '%.2f' % (avg5_flo)
 ao5 = Label(root, text = 'Average of 5: ' + avg5, font=20, background='#f6e58d', fg = 'black')
 ao5.grid(row=5, column=0, pady=5, padx=10)
+# Initial Average of 12
 avg12 = ''
 avg12_flo = 0
 max_c12=0
@@ -208,6 +229,7 @@ if(count>=12):
     avg12 = '%.2f' % (avg12_flo)
 ao12 = Label(root, text = 'Average of 12: ' + avg12, font=20, background='#f6e58d', fg = 'black')
 ao12.grid(row=5, column =1, pady=5, padx=10)
+# Initial Total Mean
 k = 0
 mean = 0
 while(k<count) :
