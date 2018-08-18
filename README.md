@@ -29,4 +29,4 @@ pip install -r requirements.txt
 ```
 
 # Screenshot
-
+![](https://raw.githubusercontent.com/sggts04/pycubetimer/master/screenshot.png)
