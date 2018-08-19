@@ -1,31 +1,34 @@
 import time
 import os
 from tkinter import *
-import keyboard
 from pyTwistyScrambler import scrambler333
 
 b = 0
 timed = '0.00'
 
-def change_scramble() :
+
+def change_scramble():
     scramble.config(text=scrambler333.get_WCA_scramble())
 
-def watch() :
+
+def watch(args=0):
     global b, timed
-    b=0
+    # Sets focus on stop button so it can be run through space-bar
+    stop.focus_set()
+    b = 0
     timed = '0.00'
     now = time.time()
     # Enable Stop button and Disable Start button
-    start.config(state = DISABLED)
-    stop.config(state = NORMAL)
-    while (b==0):
-        time.sleep(.05)
+    start.config(state=DISABLED)
+    stop.config(state=NORMAL)
+    while b == 0:
+        time.sleep(0.01)
         timer.config(text="%.2f" % (time.time() - now))
         timed = "%.2f" % (time.time() - now)
         root.update()
-        if keyboard.is_pressed('space'):
-            freeze()
-def freeze():
+
+
+def freeze(args=0):
     global b, timed, count, times_list, p, avg5, avg5_flo, times_list_5_flo, times_list_5, min_5, max_5, min_c, max_c, avg12, avg12_flo, times_list_12_flo, times_list_12, min_12, max_12, min_c12, max_c12, k ,mean
     # To stop the timer
     b=b+1
@@ -127,6 +130,8 @@ def freeze():
     mean = '%.2f' % (mean)
     meantotal.config(text='Total Mean: ' + mean)
     root.update()
+    # Sets focus on start button so it can be run through space-bar
+    start.focus_set()
 
 
 root = Tk()
@@ -146,6 +151,7 @@ img1 = PhotoImage(file="img/start.png")
 img2 = PhotoImage(file="img/stop.png")
 chng_image = PhotoImage(file="img/refresh.png")
 start = Button(root, command = watch, background='#f6e58d', image=img1, font=('Verdana', 20), relief = FLAT)
+start.focus_set()
 stop = Button(root, background='#f6e58d', command = freeze, image=img2, font=('Verdana',20), relief = FLAT, state = DISABLED)
 times_count = Label(root, text = 'No. of Solves: ' + str(count), font=20, background='#f6e58d', fg = 'black')
 # Get last 12 solves
