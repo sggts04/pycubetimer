@@ -1,6 +1,7 @@
 import time
 import os
 from tkinter import *
+from tkinter import messagebox
 from pyTwistyScrambler import scrambler333
 
 b = 0
@@ -32,6 +33,8 @@ def freeze(args=0):
     global b, timed, count, times_list, p, avg5, avg5_flo, times_list_5_flo, times_list_5, min_5, max_5, min_c, max_c, avg12, avg12_flo, times_list_12_flo, times_list_12, min_12, max_12, min_c12, max_c12, k ,mean
     # To stop the timer
     b=b+1
+    if(float(timed) < 14.96) :
+        messagebox.showinfo("Congratulations!", "You just beat the Developer's Best Time of 14.96 seconds!")
     # Re-Enable Start button and Disable Stop button
     start.config(state = NORMAL)
     stop.config(state = DISABLED)
@@ -176,13 +179,13 @@ saved_times = Label(root, text = 'Last 12 Solves: ' + saved_times_str, font=20, 
 scramble = Label(root, text = scrambler333.get_WCA_scramble(), font=20, background = '#f6e58d', fg='black')
 chng_scramble = Button(root, image=chng_image, relief=FLAT, background = "#f6e58d", command = change_scramble)
 # Pack the elements
-timer.grid(row=1, columnspan=3, padx = 20, pady = 20)
+timer.grid(row=1, columnspan=4, padx = 20, pady = 20)
 start.grid(row=2, pady=15, padx=10)
-stop.grid(row=2, column=2, pady=15, padx=10)
-times_count.grid(row=3, columnspan=3, pady =10, padx = 5)
-saved_times.grid(row=4, columnspan=3, pady=10, padx = 10)
-scramble.grid(row=0, columnspan=3, pady=15, padx = 5)
-chng_scramble.grid(row=0, column=2)
+stop.grid(row=2, column=3, pady=15, padx=10)
+times_count.grid(row=3, columnspan=4, pady =10, padx = 5)
+saved_times.grid(row=4, columnspan=4, pady=10, padx = 10)
+scramble.grid(row=0, columnspan=4, pady=15, padx = 5)
+chng_scramble.grid(row=0, column=3)
 # Initial Average of 5
 avg5 = ''
 avg5_flo = 0
@@ -250,6 +253,8 @@ while(k<count) :
 mean = '%.2f' % (mean)
 meantotal = Label(root, text = 'Total Mean: ' + mean, font=20, background='#f6e58d', fg = 'black')
 meantotal.grid(row=5, column =2, pady=5, padx=10)
-root.title('pyCubeTimer')
+devbest = Label(root, text = "Developer's Best: 14.96", font=20, background='#f6e58d', fg = 'black')
+devbest.grid(row=5, column =3, pady=5, padx=10)
+root.title('pyCubeTimer v1.1')
 root.wm_iconbitmap('img/icon.ico')
 root.mainloop()
