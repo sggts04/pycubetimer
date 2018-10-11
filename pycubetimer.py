@@ -30,11 +30,11 @@ def watch(args=0):
 
 
 def freeze(args=0):
-    global b, timed, count, times_list, p, avg5, avg5_flo, times_list_5_flo, times_list_5, min_5, max_5, min_c, max_c, avg12, avg12_flo, times_list_12_flo, times_list_12, min_12, max_12, min_c12, max_c12, k ,mean
+    global b, timed, count, times_list, p, avg5, avg5_flo, times_list_5_flo, times_list_5, min_5, max_5, min_c, max_c, avg12, avg12_flo, times_list_12_flo, times_list_12, min_12, max_12, min_c12, max_c12, k ,mean, fast, time_fast
     # To stop the timer
     b=b+1
-    if(float(timed) < 14.96) :
-        messagebox.showinfo("Congratulations!", "You just beat the Developer's Best Time of 14.96 seconds!")
+    if(float(timed) < 13.26) :
+        messagebox.showinfo("Congratulations!", "You just beat the Developer's Best Time of 13.26 seconds!")
     # Re-Enable Start button and Disable Stop button
     start.config(state = NORMAL)
     stop.config(state = DISABLED)
@@ -132,6 +132,12 @@ def freeze(args=0):
         k = k + 1
     mean = '%.2f' % (mean)
     meantotal.config(text='Total Mean: ' + mean)
+    #Updating Best Time
+    fast = times_list[0]
+    for time_fast in times_list:
+        if float(time_fast)<float(fast):
+            fast = time_fast
+    fast_time.config(text='Your Best Time: '+fast)
     root.update()
     # Sets focus on start button so it can be run through space-bar
     start.focus_set()
@@ -182,7 +188,7 @@ chng_scramble = Button(root, image=chng_image, relief=FLAT, background = "#f6e58
 timer.grid(row=1, columnspan=4, padx = 20, pady = 20)
 start.grid(row=2, pady=15, padx=10)
 stop.grid(row=2, column=3, pady=15, padx=10)
-times_count.grid(row=3, columnspan=4, pady =10, padx = 5)
+times_count.grid(row=3, column=0, columnspan=2, pady =10, padx = 5)
 saved_times.grid(row=4, columnspan=4, pady=10, padx = 10)
 scramble.grid(row=0, columnspan=4, pady=15, padx = 5)
 chng_scramble.grid(row=0, column=3)
@@ -253,8 +259,20 @@ while(k<count) :
 mean = '%.2f' % (mean)
 meantotal = Label(root, text = 'Total Mean: ' + mean, font=20, background='#f6e58d', fg = 'black')
 meantotal.grid(row=5, column =2, pady=5, padx=10)
-devbest = Label(root, text = "Developer's Best: 14.96", font=20, background='#f6e58d', fg = 'black')
+devbest = Label(root, text = "Developer's Best: 13.26", font=20, background='#f6e58d', fg = 'black')
 devbest.grid(row=5, column =3, pady=5, padx=10)
-root.title('pyCubeTimer v1.1')
+#Best Time
+if times_list:
+    fast = times_list[0]
+    for time_fast in times_list:
+        if float(time_fast)<float(fast):
+            fast = time_fast
+else:
+    fast=""
+
+fast_time = Label(root, text = "Your Best Time: "+fast, font=20, background='#f6e58d', fg = 'black')
+fast_time.grid(row=3, column=2, columnspan =2, pady=5, padx=10)
+
+root.title('pyCubeTimer v1.2')
 root.wm_iconbitmap('img/icon.ico')
 root.mainloop()
