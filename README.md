@@ -13,7 +13,7 @@ pip install -r requirements.txt
 python pycubetimer.py
 ```
 
-# Screenshots
+# Screenshots(For v1.1)
 When Timer is stopped
   
 ![](https://raw.githubusercontent.com/sggts04/pycubetimer/master/screenshots/screenshot1.PNG)
